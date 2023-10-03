@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+
+<head>
+    <style>
+        @media (max-width: 1024px) {
+        body { background: orange;}
+        }
+        @media (max-width: 768px) {
+        body {background: yellow;}
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1 style="font-size:10vw">Responsive webpage</h1> 
+        <p> this should change colour when the page is resized</p>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Firefox_logo%2C_2017.svg/800px-Firefox_logo%2C_2017.svg.png" style="max-width:100%;height:auto;"> 
+   </div>
+    <div>
+        <h2>JavaScript Functions</h2> 
+        <div>
+            <h2> strings part</h2>
+            <p>enter some letters or a sentence</p>
+
+            <form id="stringspart">
+                the string: <input type="text" name="userinstr"><br>
+            </form>
+
+            <button onclick="usestrings()">strings</button>
+
+            <p id="entered"></p>
+            <p id="length"></p>
+            <p id="first"></p>
+            <p id="caps"></p>
+            <p id="replace"></p>
+
+            <script>
+                function usestrings(){
+                    strs = document.getElementById("stringspart");
+                    stringvals = strs.elements[0].value
+
+                    document.getElementById("entered").innerHTML = "you entered " + stringvals
+                    document.getElementById("length").innerHTML = "length is " + stringvals.length
+                    document.getElementById("first").innerHTML = "first letter is " + stringvals[0]
+                    document.getElementById("caps").innerHTML = "in caps " +stringvals.toUpperCase()
+                    document.getElementById("replace").innerHTML = "letter y replaced with x: " + stringvals.replaceAll(/y/g, "X")
+                }
+            </script>
+        </div>
+
+        <div>
+            <h2> numbers part</h2>
+            <p>enter some numbers</p>     
+
+            <form id="addform">
+                First number: <input type="number" name="userin1"> <br>
+                Second Number: <input type="number" name="userin2"> <br>
+            </form>
+
+            <button onclick="addnumbers()">add</button>
+
+            <p id="numms"></p>
+            <p id="added"></p>
+            <p id="equal"></p>
+            <p id="multiply"></p>
+            <p id="difference"></p>
+
+            <script>
+            function addnumbers(){
+                var nums = document.getElementById("addform");
+                var num1 = nums.elements[0].value 
+                var num2 = nums.elements[1].value                
+                var num3 = +num1 + +num2
+                                
+                document.getElementById("numms").innerHTML = "you entered " + num1 + " and " + num2 
+                document.getElementById('added').innerHTML = "added is " + num3
+
+                if (num1 == num2){
+                    document.getElementById('equal').innerHTML = "the numbers are equal"
+                }
+                else document.getElementById('equal').innerHTML = "the numbers are not the same"
+
+                document.getElementById("multiply").innerHTML = "multiplied is " + num1 * num2
+                document.getElementById("difference").innerHTML = "difference is " + Math.abs(num1 - num2)
+            } 
+            </script>
+        </div>
+
+        <div>
+            <h2> arrays bit</h2>
+
+            <p id="array1"></p>
+            <p id="array2"></p>
+            <p id="array3"></p>
+            <p id="array4"></p>
+            <p id="array5"></p>
+            <p id="array6"></p>
+
+            <button onclick="arrays()">arrayyy</button>
+
+            <script>
+                function arrays(){
+                    var newarray = ["value 1"]
+                    var userarray = document.getElementById("addform")
+                    newarray.push(userarray.elements[0].value)
+                    newarray.push(userarray.elements[1].value)
+
+                    document.getElementById("array1").innerHTML = "length: "+ newarray.length
+                    document.getElementById("array2").innerHTML = "new array is: "+ newarray
+                    document.getElementById("array3").innerHTML = "newarray .shift(): "+ newarray.shift()
+                    document.getElementById("array4").innerHTML = "concated 'added this' "+ newarray.concat("added this")
+                    document.getElementById("array5").innerHTML = "spliced out the [1] entry: "+ newarray.splice(1, 1, "spliced this")
+                    document.getElementById("array6").innerHTML = "final array: "+ newarray
+                }
+            </script>
+        </div>
+
+        <div>
+            <h2> Dates part</h2>
+
+            <p id="dates1"></p>
+            <p id="dates2"></p>
+            <p id="dates3"></p>
+            <p id="dates4"></p>
+            <p id="dates5"></p>
+
+            <button onclick="getdate()">dates</button>
+
+            <script>
+                function getdate(){
+                    var date = new Date()
+
+                    document.getElementById("dates1").innerHTML = "as string: "+ date.toString()
+                    document.getElementById("dates2").innerHTML = "as iso string: "+ date.toISOString()
+                    document.getElementById("dates3").innerHTML = "year: "+ date.getFullYear()
+                    document.getElementById("dates4").innerHTML = "time: " + date.getHours() + ":" + date.getMinutes()
+                    document.getElementById("dates5").innerHTML = "timezone offset: "+ date.getTimezoneOffset()
+                }
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>
